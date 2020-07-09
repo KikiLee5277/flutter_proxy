@@ -3,7 +3,8 @@
 可以设置到dio库上,方便抓包。
 
 使用方法:
-FlutterFkCommon.getDynamicProxy.then((map){//获取ip动态代理
+
+FlutterFkCommon.getDynamicProxy.then((map){
 
       if(map == null){
         return;
