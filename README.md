@@ -4,6 +4,7 @@
 
 使用方法:
 FlutterFkCommon.getDynamicProxy.then((map){//获取ip动态代理
+
       if(map == null){
         return;
       }
