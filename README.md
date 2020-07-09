@@ -1,14 +1,23 @@
 # flutter_proxy
+一款flutter获取手机动态代理的插件
+可以设置到dio库上,方便抓包。
 
-A new Flutter Dio Proxy plugin.
-
-## Getting Started
-
-This project is a starting point for a Flutter
-[plug-in package](https://flutter.dev/developing-packages/),
-a specialized package that includes platform-specific implementation code for
-Android and/or iOS.
-
-For help getting started with Flutter, view our 
-[online documentation](https://flutter.dev/docs), which offers tutorials, 
-samples, guidance on mobile development, and a full API reference.
+使用方法:
+FlutterFkCommon.getDynamicProxy.then((map){//获取ip动态代理
+      if(map == null){
+        return;
+      }
+      if(map is Map){//返回格式 {proxyPort: 8888, proxyHost: 192.168.1.1}
+        String proxyHost = map['proxyHost'];
+        int proxyPort = map['proxyPort'];
+        if(proxyHost !=null && proxyHost.isNotEmpty && proxyPort != -1){
+          (dio.httpClientAdapter as DefaultHttpClientAdapter).onHttpClientCreate =
+              (client) {
+            client.badCertificateCallback = (cert, host, port) => true;
+            client.findProxy = (uri) {
+              return 'PROXY $proxyHost:$proxyPort';
+            };
+          };
+        }
+      }
+    });
