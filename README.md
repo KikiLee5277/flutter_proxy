@@ -1,2 +1,2 @@
 # flutter_proxy
-flutter 给dio库设置的动态代理，方便抓包
+一个给dio库设置动态代理方便抓包的插件
