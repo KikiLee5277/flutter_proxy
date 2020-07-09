@@ -4,9 +4,9 @@
 
 使用方法:
 
-FlutterFkCommon.getDynamicProxy.then((map){
-
-      if(map == null){
+FlutterProxy.getDynamicProxy.then((map){
+     
+     if(map == null){
         return;
       }
       if(map is Map){//返回格式 {proxyPort: 8888, proxyHost: 192.168.1.1}
